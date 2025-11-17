@@ -12,10 +12,6 @@
             <span class="contact__icon">✉️</span>
             <span>vwu1888@gmail.com</span>
           </a>
-          <a href="tel:870-819-5773" class="contact__link">
-            <span class="contact__icon">📱</span>
-            <span>(870) 819-5773</span>
-          </a>
           <a href="https://www.linkedin.com/in/vincentjwu/" class="contact__link" target="_blank">
             <span class="contact__icon">💼</span>
             <span>LinkedIn</span>
