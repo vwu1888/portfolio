@@ -56,7 +56,7 @@
             </div>
           </div>
 
-          <a href="/resume.pdf" class="btn btn--primary">View Resume</a>
+          <a href="/portfolio/resume.pdf" class="btn btn--primary">View Resume</a>
         </div>
       </div>
     </div>
