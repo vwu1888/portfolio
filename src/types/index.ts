@@ -15,6 +15,8 @@ export interface Project {
 export interface ProjectSubsection {
   title: string
   description: string
+  imageSrc?: string
+  imagePosition?: 'top' | 'bottom'
 }
 
 export interface ExperienceItem {

@@ -41,6 +41,15 @@
             >
               <summary>{{ subsection.title }}</summary>
               <p>{{ subsection.description }}</p>
+
+              <!-- Subsection Image -->
+              <div
+                v-if="subsection.imageSrc"
+                class="subsection__image"
+                :class="`subsection__image--${subsection.imagePosition || 'bottom'}`"
+              >
+                <img :src="subsection.imageSrc" :alt="subsection.title" @error="handleImageError" />
+              </div>
             </details>
           </div>
         </div>
@@ -66,23 +75,30 @@ const projects: Project[] = [
   {
     id: 'baja-daq',
     featured: true,
-    tag: 'Featured Project',
     title: 'Baja SAE Data Acquisition System',
     description:
       "Leading the development and integration of a custom DAQ system for Pack Motorsports' off-road racing vehicle. Designing sensors, fabricating wiring harnesses, and managing concurrent projects across multiple subsystems.",
-    technologies: ['KiCAD PCB Design', 'Embedded C', 'CAN Bus', 'Sensor Integration'],
+    technologies: [
+      'KiCAD PCB Design',
+      'Embedded C',
+      'CAN Bus',
+      'Sensor Integration',
+      'CAD',
+      'Full-Stack Development',
+    ],
     githubUrl: 'https://github.com/wmBaja/PCB-Design',
-    imageSrc: '/images/baja-daq.jpg',
     imagePosition: 'left',
     subsections: [
       {
         title: 'Engine RPM Sensor',
         description:
-          'Custom piezo-based sensor for accurate engine speed measurement in harsh racing conditions.',
+          'Custom piezo-based sensor for engine speed measurement in harsh racing conditions.',
+        imageSrc: '/images/engine-rpm-sensor.jpg',
+        imagePosition: 'bottom',
       },
       {
         title: 'Suspension Hall Effect Sensor',
-        description: 'PCB-based hall effect sensor for real-time suspension travel monitoring.',
+        description: 'Real-time suspension travel monitoring using hall effect sensors.',
       },
       {
         title: 'MDF4 Logging System',
@@ -96,20 +112,19 @@ const projects: Project[] = [
     featured: false,
     title: 'Custom Media Control Box',
     description:
-      'Physical volume mixer for Windows applications. Forked the open-source DEEJ project and developed custom Arduino firmware to handle multiple encoders, buttons, and LEDs for per-application audio control.',
-    technologies: ['Arduino/C++', 'Hardware Integration', 'Windows API', '3D Design'],
+      'Physical volume mixer for Windows applications. Forked the open-source deej project and developed custom Arduino firmware to handle multiple encoders, buttons, and LEDs for per-application audio and media control.',
+    technologies: ['Arduino/C++', 'Hardware Integration', 'Windows API', 'CAD'],
     githubUrl: 'https://github.com/vwu1888/deej',
-    imagePosition: 'left',
+    imagePosition: 'right',
   },
   {
     id: 'led-matrix',
     featured: false,
-    title: '8x8 LED Rasterization Driver',
+    title: '8x8 LED Matrix Display Driver',
     description:
-      'Digital logic final project featuring frame-based animation system. Built with discrete logic components, EEPROM frame storage, and switch-based playback controls. Demonstrates fundamental understanding of digital circuits and memory interfacing.',
+      'Digital logic design final project featuring frame-based animation system. Built with discrete logic components, EEPROM frame storage, and switch-based playback controls. Demonstrates fundamental understanding of digital circuits and memory interfacing.',
     technologies: ['Digital Logic', 'EEPROM', 'Circuit Design', 'Breadboard Prototyping'],
-    imageSrc: '/images/led-matrix.jpg',
-    imagePosition: 'right',
+    imagePosition: 'left',
   },
 ]
 
@@ -133,12 +148,6 @@ const handleImageError = (e: Event) => {
   gap: var(--spacing-lg);
   margin-bottom: var(--spacing-xl);
   align-items: center;
-}
-
-@media (max-width: 768px) {
-  .project {
-    grid-template-columns: 1fr;
-  }
 }
 
 .project--featured {
@@ -232,6 +241,12 @@ const handleImageError = (e: Event) => {
   margin-top: var(--spacing-md);
 }
 
+@media (max-width: 768px) {
+  .project {
+    grid-template-columns: 1fr;
+  }
+}
+
 .subsection {
   border: 1px solid var(--border);
   border-radius: 8px;
@@ -255,5 +270,28 @@ const handleImageError = (e: Event) => {
 .subsection p {
   margin-top: var(--spacing-sm);
   color: var(--text-secondary);
+}
+
+.subsection__image img {
+  width: 100%;
+  height: auto;
+  margin-top: var(--spacing-sm);
+  border-radius: 6px;
+  box-shadow: 0 2px 10px var(--shadow);
+}
+
+.subsection__image--top {
+  order: -1;
+  margin-top: 0;
+  margin-bottom: var(--spacing-sm);
+}
+
+@media (max-width: 768px) {
+  .subsection__image--left,
+  .subsection__image--right {
+    float: none;
+    max-width: 100%;
+    margin: var(--spacing-sm) 0;
+  }
 }
 </style>
