@@ -46,9 +46,9 @@ const experiences: ExperienceItem[] = [
     companyUrl: 'https://www.ncstatebaja.com/',
     date: 'Sept 2024 - Present',
     responsibilities: [
-      'Leading development of custom data acquisition system',
-      'Designing and fabricating sensors and wiring harnesses',
-      'Managing concurrent projects across multiple subsystems'
+      'Development and integration of a custom DAQ system',
+      'Fabricated sensors and wiring harnesses to fit the specific needs of the car',
+      'Management of multiple concurrent projects and coordination with other subsystems'
     ]
   },
   {
