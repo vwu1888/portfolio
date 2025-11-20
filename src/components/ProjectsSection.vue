@@ -106,7 +106,8 @@ const projects: Project[] = [
       },
       {
         title: 'Suspension Hall Effect Sensor',
-        description: 'Real-time suspension travel monitoring using hall effect sensors. Mounted on the a-arms to measure displacement of the suspension.',
+        description:
+          'Real-time suspension travel monitoring using hall effect sensors. Mounted on the a-arms to measure displacement of the suspension.',
         imageSrc: '/images/projects/hallEffectPCB.png',
         imagePosition: 'top',
       },
@@ -269,6 +270,29 @@ const projects: Project[] = [
 
   .project__content {
     order: 1;
+  }
+}
+
+details {
+  inline-size: 50ch;
+
+  @media (prefers-reduced-motion: no-preference) {
+    interpolate-size: allow-keywords;
+  }
+
+  &::details-content {
+    opacity: 0;
+    overflow: hidden;
+    max-block-size: 0;
+    transition:
+      content-visibility 0.5s allow-discrete,
+      opacity 0.5s,
+      max-block-size 0.5s ease;
+  }
+
+  &[open]::details-content {
+    opacity: 1;
+    max-block-size: 800px;
   }
 }
 
