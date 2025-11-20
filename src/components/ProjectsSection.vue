@@ -14,7 +14,6 @@
             v-if="project.imageSrc"
             :src="project.imageSrc"
             :alt="project.title"
-            @error="handleImageError"
           />
           <div v-else class="project__placeholder">Image Coming Soon</div>
         </div>
@@ -39,16 +38,28 @@
               :key="subsection.title"
               class="subsection"
             >
+              <div v-if="subsection.imagePosition === 'top'" class="subsection__image">
+                <img
+                  v-if="subsection.imageSrc"
+                  :src="subsection.imageSrc"
+                  :alt="subsection.title"
+                />
+                <div v-else class="subsection__placeholder">Image Coming Soon</div>
+              </div>
+
               <summary>{{ subsection.title }}</summary>
               <p>{{ subsection.description }}</p>
 
-              <!-- Subsection Image -->
               <div
-                v-if="subsection.imageSrc"
+                v-if="subsection.imagePosition === 'bottom'"
                 class="subsection__image"
-                :class="`subsection__image--${subsection.imagePosition || 'bottom'}`"
               >
-                <img :src="subsection.imageSrc" :alt="subsection.title" @error="handleImageError" />
+                <img
+                  v-if="subsection.imageSrc"
+                  :src="subsection.imageSrc"
+                  :alt="subsection.title"
+                />
+                <div v-else class="subsection__placeholder">Image Coming Soon</div>
               </div>
             </details>
           </div>
@@ -59,7 +70,6 @@
             v-if="project.imageSrc"
             :src="project.imageSrc"
             :alt="project.title"
-            @error="handleImageError"
           />
           <div v-else class="project__placeholder">Image Coming Soon</div>
         </div>
@@ -93,7 +103,6 @@ const projects: Project[] = [
         title: 'Engine RPM Sensor',
         description:
           'Custom piezo-based sensor for engine speed measurement in harsh racing conditions.',
-        imageSrc: '/images/engine-rpm-sensor.jpg',
         imagePosition: 'bottom',
       },
       {
@@ -128,17 +137,6 @@ const projects: Project[] = [
   },
 ]
 
-const handleImageError = (e: Event) => {
-  const target = e.target as HTMLImageElement
-  const parent = target.parentElement
-  if (parent) {
-    target.style.display = 'none'
-    const placeholder = document.createElement('div')
-    placeholder.className = 'project__placeholder'
-    placeholder.textContent = 'Image Coming Soon'
-    parent.appendChild(placeholder)
-  }
-}
 </script>
 
 <style scoped>
@@ -245,6 +243,14 @@ const handleImageError = (e: Event) => {
   .project {
     grid-template-columns: 1fr;
   }
+
+  .project__image {
+    order: -1;
+  }
+
+  .project__content {
+    order: 1;
+  }
 }
 
 .subsection {
@@ -275,23 +281,21 @@ const handleImageError = (e: Event) => {
 .subsection__image img {
   width: 100%;
   height: auto;
-  margin-top: var(--spacing-sm);
+  margin: var(--spacing-sm);
   border-radius: 6px;
   box-shadow: 0 2px 10px var(--shadow);
 }
 
-.subsection__image--top {
-  order: -1;
-  margin-top: 0;
-  margin-bottom: var(--spacing-sm);
-}
-
-@media (max-width: 768px) {
-  .subsection__image--left,
-  .subsection__image--right {
-    float: none;
-    max-width: 100%;
-    margin: var(--spacing-sm) 0;
-  }
+.subsection__placeholder {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--border) 100%);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  font-weight: 600;
+  margin: var(--spacing-sm) 0;
 }
 </style>
