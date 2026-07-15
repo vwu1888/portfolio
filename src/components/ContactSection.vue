@@ -144,6 +144,5 @@ const copyEmail = (event: MouseEvent) => {
 .contact__text {
   font-size: 1rem;
   text-align: center;
-  word-break: break-word;
 }
 </style>
