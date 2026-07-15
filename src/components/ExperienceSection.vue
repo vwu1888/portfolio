@@ -41,7 +41,7 @@ import type { ExperienceItem } from '@/types'
 
 const experiences: ExperienceItem[] = [
   {
-    title: 'Electronics Junior Lead',
+    title: 'Electronics Lead',
     company: 'Pack Motorsports Baja SAE',
     companyUrl: 'https://www.ncstatebaja.com/',
     date: 'Sept 2024 - Present',
