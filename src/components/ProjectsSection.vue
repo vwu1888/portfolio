@@ -84,27 +84,29 @@ const projects: Project[] = [
   {
     id: 'baja-daq',
     featured: true,
-    title: 'Baja SAE Data Acquisition System',
+    title: 'Wolftrack',
     description:
-      "Leading the development and integration of a custom DAQ system for <a href='https://www.ncstatebaja.com/' target='_blank'>Pack Motorsports</a>' off-road racing vehicle. Designing sensors, fabricating wiring harnesses, and managing concurrent projects across multiple subsystems.",
+      "Leading the development and integration of Wolftrack, a custom Baja SAE Data Acquisition (DAQ) system for <a href='https://www.ncstatebaja.com/' target='_blank'>Pack Motorsports</a>' off-road racing vehicle. Designing custom sensor boards, fabricating custom wiring harnesses, and managing telemetry systems across multiple vehicle subsystems.",
     technologies: [
       'KiCAD PCB Design',
       'Embedded C',
       'CAN Bus',
       'Sensor Integration',
       'CAD',
+      'Rapid Harness',
+      'BLF',
       'Full-Stack Development',
     ],
     githubUrl: 'https://github.com/wmBaja/PCB-Design',
-    imageSrc: '/images/projects/bajaDAQ.jpg',
+    imageSrc: '/images/projects/wolftrackVehicle.jpg',
     imagePosition: 'left',
     subsections: [
       {
         title: 'Engine RPM Sensor',
         description:
-          'Custom piezo-based sensor for engine speed measurement in harsh racing conditions. Vibration from the enginer combustion cycle is captured and processed to produce accurate RPM readings.',
-        imageSrc: '/images/projects/engRPM.jpg',
-        imagePosition: 'bottom',
+          'Custom inductive-based sensor system for engine RPM measurements in harsh racing conditions. A custom pulse signal conditioner board filters and conditions the signal to provide clean, reliable RPM readings.',
+        imageSrc: '/images/projects/pulseConditioner.png',
+        imagePosition: 'top',
       },
       {
         title: 'Suspension Hall Effect Sensor',
@@ -114,10 +116,31 @@ const projects: Project[] = [
         imagePosition: 'top',
       },
       {
-        title: 'MDF4 Logging System',
+        title: 'Wheel Speed Sensor',
         description:
-          'Industry-standard data logging implementation for comprehensive vehicle telemetry. Written in Python with Flask backend. Image shows a log visualized using <a href="https://asammdf.readthedocs.io/en/latest/" target="_blank">asammdf</a>.',
-        imageSrc: '/images/projects/MDF4Log.png',
+          'Magnetic encoder sensor mounted on the outside of the gearbox to measure wheel rotational speed. Utilizes a custom-designed bracket to position the sensor precisely relative to the encoder magnet.',
+        imageSrc: '/images/projects/wheelSpeedCAD.png',
+        imagePosition: 'top',
+      },
+      {
+        title: 'Steering Angle Sensor',
+        description:
+          'Steering angle position sensor mounted to the steering column to track driver input. This data is critical for validating steering geometry and analyzing vehicle handling dynamics.',
+        imageSrc: '/images/projects/steeringAngle.jpg',
+        imagePosition: 'bottom',
+      },
+      {
+        title: 'Wiring Harness',
+        description:
+          'Engineered and fabricated a complete vehicle wiring harness. Designed the system in <a href="https://www.rapidharness.com/" target="_blank">RapidHarness</a> to define exact wire lengths, routing, and connector pinouts prior to physical fabrication.',
+        imageSrc: '/images/projects/wiringHarnessSchematic.png',
+        imagePosition: 'top',
+      },
+      {
+        title: 'Dashboard & BLF Logging System',
+        description:
+          'Developed a custom dashboard application to interface with the Wolftrack DAQ system, providing real-time telemetry visualization and diagnostics. The backend incorporates a Binary Logging Format (BLF) implementation for comprehensive, industry-standard telemetry data logging.',
+        imageSrc: '/images/projects/wolftrackDashboard.png',
         imagePosition: 'top',
       },
     ],

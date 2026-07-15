@@ -6,7 +6,7 @@
         <div class="about__text">
           <p>
             I'm a third-year Electrical Engineering student at North Carolina State University with
-            a 4.0 GPA and a passion for control and embedded systems. My experience spans from
+            a 3.9 GPA and a passion for control and embedded systems. My experience spans from
             designing automated systems for semi-trucks at Volvo Group to leading data acquisition
             development for Pack Motorsports Baja SAE.
           </p>
